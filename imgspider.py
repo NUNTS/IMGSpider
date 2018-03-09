@@ -1,8 +1,8 @@
 import re
-import os
 import requests
 import json
-import time
+
+from downloader import DownLoader as d
 from util import header
 
 
@@ -36,21 +36,9 @@ class IMGSpider:
         with open('temp.json', 'w', encoding='utf-8') as u:
             json.dump(res, u)
 
-    def download_img_from_url(self, url_list=[], sleep_time=1):
-        name = 1
-        if os.path.isdir('./temp'):
-            pass
-        else:
-            os.mkdir('./temp')
-        if len(url_list) is 0:
-            url_list = self.get_img_dict()['obj_url']
-        for i in url_list:
-            with open('./temp/' + str(name) + '.jpg', 'wb') as img:
-                img.write(self.s.get(i).content)
-                name += 1
-                time.sleep(sleep_time)
-
 
 if __name__ == '__main__':
     img = IMGSpider()
-    img.download_img_from_url(url_list=img.get_img_dict('美食')['obj_url'])
+    print(img.get_img_dict('美食')['obj_url'])
+    d = d(url_list=img.get_img_dict('美食')['obj_url'])
+    d.download()
