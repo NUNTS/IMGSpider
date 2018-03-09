@@ -1,16 +1,18 @@
+#!/usr/bin/python3
+# -*- coding: UTF-8 -*-
+
 import re
 import requests
 import json
 
-from downloader import DownLoader as d
-from util import header
+from util.header import get_header
 
 
 class IMGSpider:
     def __init__(self):
         self.url = 'https://image.baidu.com/search/index?tn=baiduimage&word='
         self.s = requests.session()
-        self.s.headers = header.get_header()
+        self.s.headers = get_header()
         self.img_dict = {}
 
     def get_img_dict(self, key_word=''):
@@ -33,9 +35,3 @@ class IMGSpider:
         self.img_dict['obj_url'] = obj_url
         return self.img_dict
 
-
-if __name__ == '__main__':
-    img = IMGSpider()
-    list = img.get_img_dict('鲁迅')['thumb_url']
-    d = d(url_list=list)
-    d.download()

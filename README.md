@@ -1,2 +1,2 @@
-# IMGSpyder
-IMGSpyder
+# IMGSpider
+IMGSpider
