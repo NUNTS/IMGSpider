@@ -5,6 +5,7 @@ from modules.imgspider import IMGSpider
 from modules.downloader import DownLoader
 
 spider = IMGSpider()
-list = spider.get_img_dict(key_word='爱乃娜美')['thumb_url']
-d = DownLoader(url_list=list)
-d.download()
+# list = spider.get_baidu_img_dict(key_word='柯南')['thumb_url']
+# d = DownLoader(url_list=list)
+# d.download()
+print(spider.get_bing_img_dict('柯南'))
